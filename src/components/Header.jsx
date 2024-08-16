@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 "use client";
 import { GearIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
@@ -15,7 +14,7 @@ export default function Header() {
   return (
     <header className="shadow-sm py-5">
       <div className="container flex items-center justify-between px-5">
-        <span className="block font-medium">Book store</span>
+        <span className="block font-medium text-xl">Book Store</span>
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button variant="outline">

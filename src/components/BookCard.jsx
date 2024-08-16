@@ -1,23 +1,33 @@
-// // src/components/BookCard.js
-// "use client";
-// import { useDispatch } from "react-redux";
-// import { addBookToCart } from "@/lib/redux-toolkit/slices/cart";
-// import { Button } from "./ui/button";
+"use client";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
-// export function BookCard({ book }) {
-//   const dispatch = useDispatch();
-
-//   const handleAddToCart = () => {
-//     dispatch(addBookToCart(book));
-//   };
-
-//   return (
-//     <div className="p-4 border rounded-lg">
-//       <h3 className="text-xl font-bold">{book.title}</h3>
-//       <p>{book.author}</p>
-//       <p>{book.genre}</p>
-//       <p>${book.price}</p>
-//       <Button onClick={handleAddToCart}>Add to Cart</Button>
-//     </div>
-//   );
-// }
+export default function BookCard({ book }) {
+  return (
+    <Card className="hover:shadow-lg transition duration-300">
+      <CardHeader>
+        <img
+          src={book.coverUrl || "/placeholder-image.jpg"}
+          alt={book.title}
+          className="w-full h-48 object-cover rounded-t-lg"
+        />
+      </CardHeader>
+      <CardContent>
+        <CardTitle className="font-semibold text-lg">{book.title}</CardTitle>
+        <p className="text-gray-600">{book.author}</p>
+        <p className="text-sm text-gray-500 mt-2">{book.genre}</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="outline" className="w-full mt-2">
+          View Details
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}

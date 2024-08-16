@@ -1,20 +1,16 @@
-// // src/components/BookList.js
-// "use client";
-// import { useSelector } from "react-redux";
-// import { BookCard } from "./BookCard";
+"use client";
+import BookCard from "@/components/BookCard";
 
-// export function BookList() {
-//   const books = useSelector((state) => state.books);
+export default function BookList({ books }) {
+  if (!books || books.length === 0) {
+    return <p className="text-center">No books available at the moment.</p>;
+  }
 
-//   return (
-//     <section className="py-10 container px-5">
-//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-//         {books.length > 0 ? (
-//           books.map((book) => <BookCard key={book.id} book={book} />)
-//         ) : (
-//           <p>No books available</p>
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {books.map((book) => (
+        <BookCard key={book.id} book={book} />
+      ))}
+    </div>
+  );
+}
