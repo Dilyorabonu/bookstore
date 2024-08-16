@@ -11,7 +11,7 @@ function page() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axiosClient("/products")
+    axiosClient("/books")
       .then((response) => {
         setBooks(response.data.data);
       })
