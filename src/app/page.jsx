@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import { axiosClient } from "@/utils/axiosClient";
 import { useEffect } from "react";
 
+// import { BookList } from "@/components/BookList";
+
 function page() {
   useEffect(() => {
     axiosClient("/products")
@@ -12,7 +14,9 @@ function page() {
   return (
     <>
       <Header />
-      <main></main>
+      <main>
+        {/* <BookList /> */}
+      </main>
     </>
   );
 }
