@@ -22,8 +22,13 @@ export default function Login() {
 
     setLoading(true);
     try {
+      console.log("Attempting login with:", { email, password });
       const response = await axios.post("/api/auth/login", { email, password });
+
+      console.log("Login response data:", response.data);
+
       if (response.data.token) {
+        // Store token and user information
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userEmail", email);
         toast.success("Login successful!");
@@ -32,6 +37,7 @@ export default function Login() {
         toast.error(response.data.error || "Login failed.");
       }
     } catch (error) {
+      console.error("Login error:", error);
       toast.error("An error occurred during login.");
     } finally {
       setLoading(false);

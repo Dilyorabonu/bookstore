@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
-
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,13 +28,17 @@ export default function Register() {
         password,
         username, // Include username in the request
       });
+
+      console.log("Registration response data:", response.data);
+
       if (response.status === 200) {
         toast.success("Registration successful!");
-        router.push("/login");
+        router.push("/");
       } else {
         toast.error(response.data.error || "Registration failed.");
       }
     } catch (error) {
+      console.error("Registration error:", error);
       toast.error("An error occurred during registration.");
     } finally {
       setLoading(false);
